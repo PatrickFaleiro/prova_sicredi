@@ -66,19 +66,19 @@ public class CadastroUsuariosRunner implements CadasatroUsuariosComponent {
 
     public void preencheFormularioCadastroUsuario() {
 
-        AcessoSiteRunner.getDriver().findElement(By.id(nomeUsuario)).sendKeys(dados.getNomeUsuario());
-        AcessoSiteRunner.getDriver().findElement(By.id(sobrenomeUsuario)).sendKeys(dados.getUltimoNomeUsuario());
-        AcessoSiteRunner.getDriver().findElement(By.id(nomeContato)).sendKeys(dados.getNomeContatoUsuario());
-        AcessoSiteRunner.getDriver().findElement(By.id(telefone)).sendKeys(dados.getTelefoneUsuario());
-        AcessoSiteRunner.getDriver().findElement(By.id(primeiroEndereco)).sendKeys(dados.getEnderecoUsuario());
-        AcessoSiteRunner.getDriver().findElement(By.id(segundoEndereco)).sendKeys(dados.getComplementoEndereco());
-        AcessoSiteRunner.getDriver().findElement(By.id(cidade)).sendKeys(dados.getCidade());
-        AcessoSiteRunner.getDriver().findElement(By.id(estado)).sendKeys(dados.getEstado());
-        AcessoSiteRunner.getDriver().findElement(By.id(codigoPostal)).sendKeys(dados.getCodigoPostal());
-        AcessoSiteRunner.getDriver().findElement(By.id(pais)).sendKeys(dados.getPais());
+        AcessoSiteRunner.getDriver().findElement(By.id(nomeUsuario)).sendKeys(dados.consultaPropriedades("NOME_USUARIO"));
+        AcessoSiteRunner.getDriver().findElement(By.id(sobrenomeUsuario)).sendKeys(dados.consultaPropriedades("ULTIMO_NOME_USUARIO"));
+        AcessoSiteRunner.getDriver().findElement(By.id(nomeContato)).sendKeys(dados.consultaPropriedades("CONTATO_USUARIO"));
+        AcessoSiteRunner.getDriver().findElement(By.id(telefone)).sendKeys(dados.consultaPropriedades("NUMERO_TELEFONE"));
+        AcessoSiteRunner.getDriver().findElement(By.id(primeiroEndereco)).sendKeys(dados.consultaPropriedades("ENDERECO_USUARIO"));
+        AcessoSiteRunner.getDriver().findElement(By.id(segundoEndereco)).sendKeys(dados.consultaPropriedades("ENDERECO_COMPLEMENTO"));
+        AcessoSiteRunner.getDriver().findElement(By.id(cidade)).sendKeys(dados.consultaPropriedades("CIDADE_USUARIO"));
+        AcessoSiteRunner.getDriver().findElement(By.id(estado)).sendKeys(dados.consultaPropriedades("ESTADO_USUARIO"));
+        AcessoSiteRunner.getDriver().findElement(By.id(codigoPostal)).sendKeys(dados.consultaPropriedades("CODIGO_POSTAL"));
+        AcessoSiteRunner.getDriver().findElement(By.id(pais)).sendKeys(dados.consultaPropriedades("PAIS_ORIGEM_USUARIO"));
         AcessoSiteRunner.getDriver().findElement(By.xpath(campoEmpregador)).click();
         AcessoSiteRunner.getDriver().findElement(By.xpath(listaEmpregador)).click();
-        AcessoSiteRunner.getDriver().findElement(By.id(limiteCredito)).sendKeys(dados.getLimiteCredito());
+        AcessoSiteRunner.getDriver().findElement(By.id(limiteCredito)).sendKeys(dados.consultaPropriedades("LIMITE_CREDITO"));
     }
 
     public void clicaEmSave() {
@@ -98,8 +98,8 @@ public class CadastroUsuariosRunner implements CadasatroUsuariosComponent {
 
     public void pesquisaNomeUsuarioCadastrado() {
         AcessoSiteRunner.getDriverWait().until(ExpectedConditions.elementToBeClickable(By.name(campoNomePesquisa)));
-        AcessoSiteRunner.getDriver().findElement(By.name(campoNomePesquisa)).sendKeys(dados.getNomeUsuario());
-        AcessoSiteRunner.getDriverWait().until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(campoTesteSicredi),dados.getNomeUsuario()));
+        AcessoSiteRunner.getDriver().findElement(By.name(campoNomePesquisa)).sendKeys(dados.consultaPropriedades("NOME_USUARIO"));
+        AcessoSiteRunner.getDriverWait().until(ExpectedConditions.textToBePresentInElementLocated(By.xpath(campoTesteSicredi),dados.consultaPropriedades("NOME_USUARIO")));
     }
 
     public void abreOpcoesCadastro() {
